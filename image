@@ -1,0 +1,25 @@
+<input type="file" id="image-upload" multiple style="display:none;" accept="image/*" onchange="previewImages(event)">
+<div id="preview-container" style="display:flex;gap:10px;margin-top:10px;"></div>
+
+<script>
+function previewImages(event) {
+    const files = event.target.files;
+    const container = document.getElementById('preview-container');
+    container.innerHTML = ''; // Clear previous previews
+
+    Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.width = '100px';
+            img.style.height = '100px';
+            img.style.objectFit = 'cover';
+            img.style.border = '2px solid #ccc';
+            img.style.borderRadius = '5px';
+            container.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+</script>
