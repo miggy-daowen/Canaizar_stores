@@ -1,0 +1,21 @@
+<div id="admin-bar" style="background:#222;color:#fff;padding:10px;font-family:sans-serif;display:flex;justify-content:space-between;align-items:center;">
+  <div id="temp-message">Welcome, Admin!</div>
+  <div>
+    <a href="https://www.instagram.com/yourprofile/" target="_blank" style="color:#fff;text-decoration:none;margin-right:15px;">Instagram</a>
+    <button onclick="openUpload()" style="padding:5px 10px;">Upload Images</button>
+  </div>
+</div>
+
+<script>
+  // Show temporary message
+  const tempMessage = document.getElementById('temp-message');
+  tempMessage.textContent = "Let us dress you";
+  setTimeout(() => {
+    tempMessage.textContent = "Welcome, Admin!";
+  }, 3000);
+
+  // Dummy function for image upload
+  function openUpload() {
+    document.getElementById('image-upload').click();
+  }
+</script>
