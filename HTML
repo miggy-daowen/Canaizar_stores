@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canaizar Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f9ff;
+color:#0b2c5f;
+}
+
+header{
+background:white;
+padding:15px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo img{
+height:60px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#0b2c5f;
+font-weight:600;
+}
+
+nav a:hover{
+color:#007bff;
+}
+
+.stories{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:20px 8%;
+background:white;
+}
+
+.story{
+text-align:center;
+}
+
+.story img{
+width:75px;
+height:75px;
+border-radius:50%;
+border:3px solid #007bff;
+object-fit:cover;
+}
+
+.section{
+padding:50px 8%;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.product-card{
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+}
+
+.product-card img{
+width:100%;
+height:300px;
+object-fit:cover;
+}
+
+.product-info{
+padding:15px;
+}
+
+.price{
+color:#007bff;
+font-weight:700;
+margin:10px 0;
+}
+
+.whatsapp-btn{
+display:inline-block;
+padding:8px 15px;
+background:#007bff;
+color:white;
+border-radius:20px;
+text-decoration:none;
+font-size:14px;
+}
+
+.admin-panel{
+background:white;
+padding:20px;
+border-radius:15px;
+margin-top:40px;
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+}
+
+.admin-panel input{
+width:100%;
+margin-bottom:10px;
+padding:8px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.admin-panel button{
+background:#007bff;
+color:white;
+border:none;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+footer{
+background:#0b2c5f;
+color:white;
+padding:40px 8%;
+margin-top:60px;
+line-height:1.8;
+}
+
+footer a{
+color:#00c6ff;
+text-decoration:none;
+}
+
+.social-icons{
+margin-top:15px;
+}
+
+.social-icons a{
+margin-right:15px;
+font-weight:600;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">
+<img src="logo.jpg" alt="Canaizar Store Logo">
+</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#shop">Shop</a>
+<a href="#admin">Admin</a>
+</nav>
+</header>
+
+<!-- Instagram Style Stories -->
+<div class="stories">
+<div class="story">
+<img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+<p>New</p>
+</div>
+<div class="story">
+<img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246">
+<p>Hot</p>
+</div>
+<div class="story">
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d">
+<p>Sale</p>
+</div>
+</div>
+
+<section class="section" id="shop">
+<h2>Latest Collection</h2>
+<div class="products" id="product-list"></div>
+</section>
+
+<section class="section" id="admin">
+<div class="admin-panel">
+<h2>Admin - Add Product</h2>
+<input type="text" id="product-name" placeholder="Product Name">
+<input type="text" id="product-price" placeholder="Price (KES)">
+<input type="text" id="product-image" placeholder="Image URL">
+<button onclick="addProduct()">Add Product</button>
+</div>
+</section>
+
+<footer>
+<h3>Canaizar Store</h3>
+<p><strong>Let Us Style You</strong></p>
+
+Monday-Saturday<br>
+📍 Imenti House opposite Equity Bank Zodiac Stalls Z14<br>
+📞 0705526360 / 0768992105<br>
+Till: 4145654<br>
+PayPal / Visa Accepted<br>
+<strong>No Refund Policy</strong>
+
+<div class="social-icons">
+<br>
+Follow Us:<br>
+<a href="https://instagram.com/canaizar_store" target="_blank">Instagram</a>
+<a href="#">Facebook</a>
+<a href="#">TikTok</a>
+<a href="#">Pinterest</a>
+<a href="https://wa.me/254705526360" target="_blank">WhatsApp</a>
+</div>
+</footer>
+
+<script>
+function addProduct(){
+let name=document.getElementById("product-name").value;
+let price=document.getElementById("product-price").value;
+let image=document.getElementById("product-image").value;
+
+let product=document.createElement("div");
+product.classList.add("product-card");
+
+product.innerHTML=`
+<img src="${image}">
+<div class="product-info">
+<h3>${name}</h3>
+<div class="price">KES ${price}</div>
+<a class="whatsapp-btn" href="https://wa.me/254705526360?text=Hello%20I%20want%20to%20order%20${name}%20for%20KES%20${price}">Order on WhatsApp</a>
+</div>
+`;
+
+document.getElementById("product-list").appendChild(product);
+}
+</script>
+
+</body>
+</html>
